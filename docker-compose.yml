@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  service-neo4j:
+    image: neo4j:latest
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=none
+    healthcheck:
+      test: ["CMD", "wget", "http://localhost:7474"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
